@@ -106,3 +106,16 @@ HTTP直接和TCP通信，HTTPS则和SSL通信，在由SSL和TCP通信。SSL是�
 
 ![](img/charlesHttps.png) 
 
+
+
+### 补充
+
+#### http1.1 & http2.0
+
+1. 二进制协议，不再是纯文本;
+2. 可发起多个请求，废弃了 1.1 里的管道;
+3. 使用专用算法压缩头部，减少数据传输量;
+4. 允许服务器主动向客户端推送数据;
+5. 增强了安全性，“事实上”要求加密通信。
+
+Http3.0进入制定阶段，可能会使用chrome推的quic协议（quick udp internet connection）

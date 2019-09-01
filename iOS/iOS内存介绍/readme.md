@@ -704,3 +704,5 @@ NSNumber，NSDate 使用taggedPointer技术，当指针位数足以存下该数�
 参考文档：
 
 [黑幕背后的Autorelease](https://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
+
+<http://cinvoke.me/?p=228>
