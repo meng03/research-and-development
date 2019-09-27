@@ -29,7 +29,7 @@ testView.layer.bounds  :(0.0, 0.0, 100.0, 100.0)
 testView.layer.position:(150.0, 150.0)
 ```
 
-![image-20190927203643106](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927203643106.png)
+![image-20190927203643106](image-20190927203643106.png)
 
 修改下bounds的size。
 
@@ -42,7 +42,7 @@ testView.layer.bounds  :(0.0, 0.0, 60.0, 60.0)
 testView.layer.position:(150.0, 150.0)
 ````
 
-![image-20190927173923704](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927173923704.png)
+![image-20190927173923704](image-20190927173923704.png)
 
 修改了bounds中的size，frame的origin和size都发生了变化。这和只更改frame中的size是不同的。大概可以得出
 
@@ -66,7 +66,7 @@ testView.layer.bounds  :(0.0, 0.0, 60.0, 60.0)
 testView.layer.position:(150.0, 150.0)
 ````
 
-![image-20190927175018526](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927175018526.png)
+![image-20190927175018526](image-20190927175018526.png)
 
 frame再次发生了变化。上边得到的结论不适用了？不是不适用了，而是上边的0.5，其实是anchorPoint的默认值。如果把0.5换成anchorPoint，如下，那依然适用。
 
@@ -100,7 +100,7 @@ testView.layer.bounds  :(0.0, 0.0, 60.0, 60.0)
 testView.layer.position:(150.0, 150.0)
 ````
 
-![image-20190927211727488](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927211727488.png)
+![image-20190927211727488](image-20190927211727488.png)
 
 testView以(150,150)为锚点，转了45度。虽然这里可以打印出frame，并且我们其实也可以根据转角计算出当前的frame，但是官方已经不建议使用旋转之后的frame了。
 
@@ -117,7 +117,7 @@ testView.layer.bounds     :(0.0, 0.0, 141.4213562373095, 1.4210854715202004e-14)
 testView.layer.position   :(100.0, 100.0)
 ````
 
-![image-20190927212302734](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927212302734.png)
+![image-20190927212302734](image-20190927212302734.png)
 
 这时已经看不到testView了，并且innerView的位置也是很令人费解。打印出来的位置属性也非常奇怪。
 
@@ -133,7 +133,7 @@ testView.layer.position   :(150.0, 150.0)
 testView.layer.anchorPoint:(0.0, 0.0)
 ````
 
-![image-20190927212622945](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927212622945.png)
+![image-20190927212622945](image-20190927212622945.png)
 
 往左上角移动（50，50）
 
@@ -141,7 +141,7 @@ testView.layer.anchorPoint:(0.0, 0.0)
 testView.layer.position = CGPoint(x: 100, y: 100)
 ````
 
-![image-20190927212912056](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927212912056.png)
+![image-20190927212912056](image-20190927212912056.png)
 
 这些操作还是很符合预期的。
 
@@ -153,7 +153,7 @@ testView.layer.position = CGPoint(x: 100, y: 100)
 testView.layer.bounds = CGRect(x: 10, y: 10, width: 60, height: 60)
 ````
 
-![image-20190927214420809](/Users/mengbingchuan/Library/Application Support/typora-user-images/image-20190927214420809.png)
+![image-20190927214420809](image-20190927214420809.png)
 
 innerView发生了变化。所以bounds属性其实是修改当前view的展示区域。如果testView非常大，超过屏幕好多，然后通过PanGesture操作bounds的x，y，就是一个简化版的scrollView！
 
