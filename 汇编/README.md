@@ -84,7 +84,7 @@ str x5, [sp, #24]; // 把x5的值（64位数值）存到 sp+24 指向的内存�
 stp x29, x30, [sp, #-16]!; // 把 x29, x30的值存到 sp-16的地址上，并且把 sp-=16. 
 ldp x29, x30, [sp], #16;  // 从sp地址取出 16 byte数据，分别存入x29, x30. 然后 sp+=16;
 ````
-上边列出的命令，`ldr`读取单个数据，`ldp`读取一堆数据。`str`和`stp`类似。
+上边列出的命令，`ldr`读取单个数据，`ldp`读取一对数据。`str`和`stp`类似。
 后面的参数有三种形式
 
 ````
@@ -158,5 +158,8 @@ https://developer.apple.com/library/archive/documentation/DeveloperTools/Referen
 https://juejin.im/post/5aabcae1f265da238d507a68
 https://juejin.im/post/5ab4cd60f265da239612536e
 https://juejin.im/post/5c9df4c4e51d4502c94c16dd
+
+https://github.com/LeoMobileDeveloper/Blogs/blob/master/Basic/iOS%20assembly%20toturial%20part%201.md
+
 arm官方文档
 http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0802a/STUR_fpsimd.html

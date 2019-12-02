@@ -1,4 +1,4 @@
-# 坐标与布局
+#  坐标与布局
 
 UIView的frame，bounds，center基本都是来自layer的frame，bounds，position。下面介绍下layer层。
 

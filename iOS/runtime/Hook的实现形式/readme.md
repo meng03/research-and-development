@@ -156,6 +156,19 @@ static id aspect_add(id self, SEL selector, AspectOptions options, id block, NSE
 }
 ````
 
+一个对象或者类，关于一个selector会有一个AspectsContainer，这个container里记录对这个selector的hook信息
+
+````objective-c
+@interface AspectsContainer : NSObject
+- (void)addAspect:(AspectIdentifier *)aspect withOptions:(AspectOptions)injectPosition;
+- (BOOL)removeAspect:(id)aspect;
+- (BOOL)hasAspects;
+@property (atomic, copy) NSArray *beforeAspects;
+@property (atomic, copy) NSArray *insteadAspects;
+@property (atomic, copy) NSArray *afterAspects;
+@end
+````
+
 aspect_hookClass会对class进行处理，构建子类，hook子类的forwardInvocation方法，转到`__ASPECTS_ARE_BEING_CALLED__`中
 
 ```objective-c

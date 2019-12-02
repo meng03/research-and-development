@@ -43,12 +43,13 @@ unfair lock与线程优先级有什么关系？
 
 队列分两种，串行队列，并发队列。iOS中默认有主队列，全局队列。开发者可以自己创建自己的队列。
 
-串行队列执行完一个任务，才会执行下一个任务，串行执行。需要注意的是，串行队列只会保证串行，但是不会保证只用一个线程来执行，线程池应该是队列的下层封装，穿行队列执行完当前任务，会从线程池申请线程执行下个任务。
+串行队列执行完一个任务，才会执行下一个任务，串行执行。需要注意的是，串行队列只会保证串行，但是不会保证只用一个线程来执行，线程池应该是队列的下层封装，串行队列执行完当前任务，会从线程池申请线程执行下个任务。
 
 并发队列多个线程会依次从队列中拿出任务执行。并发数与空闲线程有关，由GCD调度。
 全局队列属于并发队列，由多个线程处理任务。主队列只有主线程来执行，所以是串行队列。
 
 **主队列一度让我很迷惑，因为它给我的感觉是，所有用户的操作都被封装成了任务，添加到主队列中执行**，比如用户点击一个按钮，打开一个页面。被封装成一个任务，放到了主队列中。这样比较好解释在主线程异步分发主队列任务`DispatchQueue.main.async`。后来有人解惑，才知道主队列不同于一般的专门的队列。主队列的实现是通过runloop来实现的，如下代码。
+
 ````objective-c
 else if (msg_is_dispatch) {
     __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__(msg);
@@ -185,6 +186,7 @@ while (moreToDo) {
 }
 ````
 ##### NSRecursiveLock
+
 提供了可重入式的锁，允许同一个线程多次lock。这在递归调用上很有必要，名字也很明显，直译就叫递归锁。
 ````objective-c
 NSRecursiveLock *theLock = [[NSRecursiveLock alloc] init];
@@ -238,7 +240,13 @@ while (true)
 
 **问题：**
 
-条件锁是不是和信号量类似，可以由一个线程加锁，另一个线程解锁。
+条件锁是不是和信号量类似，可以由一个线程加锁，另一个线程解锁。NSLock则不可以这样处理
+
+> Warning: The NSLock class uses POSIX threads to implement its locking behavior. When sending an unlock message to an NSLock object, you must be sure that message is sent from the same thread that sent the initial lock message. Unlocking a lock from a different thread can result in undefined behavior.
+
+
+
+### 线程调度
 
 
 

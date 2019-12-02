@@ -1,7 +1,9 @@
-简介
+### 几个重要概念
+
 `HTTP`协议全称`Hyper Text Transfer Protocol` 超文本传输协议。目前大部分服务都是基于HTTP或者HTTPS协议。这里介绍下协议中比较重要的概念。
 
-####统一资源定位符 
+####统一资源定位符
+
 `URL` `Uniform Resource Locator` 统一资源定位符。完整格式如下：
 [协议类型]://访问资源需要的凭证信息@服务器地址:端口号/资源层级UNIX文件路径文件名?查询#片段`ID`
 现在的`HTTP`服务一般都有独立的登陆模块，所以这里的访问资源凭证信息一般是不需要的。此外常用的服务，如HTTP，FTP等，端口号都是固定的，所以比较常用的格式如下：
@@ -24,7 +26,9 @@ let encodedQuery = url.query?.addingPercentEncoding(withAllowedCharacters: .urlQ
 ````
 
 #### HTTPMETHOD
+
 `HTTP Method`一开始只有一个，后续添加到了8个
+
 * `HTTP` 0.9 这个版本只有`GET`方法
 * `HTTP` 1.0 这个版本有`GET` `HEAD` `POST`这三个方法
 * `HTTP` 1.1 这个版本是当前版本，包含`GET` `HEAD` `POST` `OPTIONS` `PUT` `DELETE` `TRACE` `CONNECT` 这8个方法
@@ -75,6 +79,7 @@ let encodedQuery = url.query?.addingPercentEncoding(withAllowedCharacters: .urlQ
 为了解决这些问题，需要在http上加入加密处理，完整性校验和认证等机制。有了这些机制，就是我们常说的HTTPS（HTTP Secure）。
 
 ### HTTPS 的实现
+
 HTTP直接和TCP通信，HTTPS则和SSL通信，在由SSL和TCP通信。SSL是独立于HTTP的协议。
 
 ### 如何解决HTTP的问题
